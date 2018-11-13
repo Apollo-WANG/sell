@@ -2,6 +2,8 @@ package com.imooc.service.impl;
 
 import com.imooc.dataobject.OrderDetail;
 import com.imooc.dto.OrderDto;
+import com.imooc.enums.OrderStatusEnum;
+import com.imooc.enums.PayStatusEnum;
 import com.imooc.service.OrderService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -63,17 +65,29 @@ public class OrderServiceImplTest {
 
     @Test
     public void findList() {
+        PageRequest request = new PageRequest(0, 2);
+        Page<OrderDto> orderDtoPage = orderService.findList(OPENID, request);
+        Assert.assertNotEquals(0, orderDtoPage.getTotalElements());
     }
 
     @Test
     public void cancel() {
+        OrderDto orderDto = orderService.findOne(ORDER_ID);
+        OrderDto reuslt = orderService.cancel(orderDto);
+        Assert.assertNotEquals(OrderStatusEnum.CANCEL.getCode(), reuslt.getOrderStatus());
     }
 
     @Test
     public void finish() {
+        OrderDto orderDto = orderService.findOne(ORDER_ID);
+        OrderDto reuslt = orderService.finish(orderDto);
+        Assert.assertEquals(OrderStatusEnum.FINISHED.getCode(), reuslt.getOrderStatus());
     }
 
     @Test
     public void paid() {
+        OrderDto orderDto = orderService.findOne(ORDER_ID);
+        OrderDto reuslt = orderService.paid(orderDto);
+        Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(), reuslt.getPayStatus());
     }
 }
