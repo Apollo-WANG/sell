@@ -1,7 +1,7 @@
 package com.imooc.service.impl;
 
 import com.imooc.dataobject.ProductInfo;
-import enums.ProductStatusEnum;
+import com.imooc.enums.ProductStatusEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author: wangzehuai

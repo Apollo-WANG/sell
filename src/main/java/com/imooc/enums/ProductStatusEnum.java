@@ -1,21 +1,19 @@
-package enums;
+package com.imooc.enums;
 
 import lombok.Getter;
 
 /**
  * @Author: wangzehuai
  * @Description:
- * @Date: Created in 9:31 2018/11/8
+ * @Date: Created in 0:38 2018/11/8
  * @Modified By:
  */
 @Getter
-public enum PayStatusEnum {
-    WAIT(0, "等待支付"),
-    SUCCESS(1, "支付成功");
-
+public enum ProductStatusEnum {
+    UP(0,"上架"),DOWN(1,"下架");
     private Integer code;
     private String message;
-    PayStatusEnum(Integer code,String message){
+    ProductStatusEnum(Integer code,String message){
         this.code=code;
         this.message = message;
     }
